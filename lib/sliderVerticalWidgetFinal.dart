@@ -35,7 +35,7 @@ class _SliderVerticalWidgetState extends State<SliderVerticalWidget> {
           children: [
             Positioned(
               child: PointsBarVerticalWidget(),
-              top: 100
+              top: 230, //casi estremi con 660 di altezza: -100, +510
             ),
             Opacity(
               opacity: 0.6,
