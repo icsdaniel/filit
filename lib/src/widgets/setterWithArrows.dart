@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class SetterWithArrows extends StatefulWidget {
@@ -18,15 +20,10 @@ class SetterWithArrows extends StatefulWidget {
 
 class _SetterWithArrowsState extends State<SetterWithArrows> {
   int value;
-  int get _value => value;
   int min;
   int max;
 
   _SetterWithArrowsState(this.value, this.min, this.max);
-
-  int getValue(){
-    return this.value;
-  }
 
   @override
   Widget build(BuildContext context) {
