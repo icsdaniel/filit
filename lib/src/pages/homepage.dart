@@ -1,37 +1,245 @@
 import 'package:flutter/material.dart';
-import 'otherpage.dart';
+import 'sliderPage.dart';
 import '../widgets/setterWithArrows.dart';
 
 class HomePage extends StatefulWidget {
+  static const routeName = '/homepage';
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
+  var _team = 2;
+  var _round = 5;
+
+  initializeGame() {
+    Navigator.pushNamed(
+      context,
+      StartGame.routeName,
+      arguments: {
+        'round': _round,
+        'teams': _team,
+      },
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('First Route'),
-      ),
-      body: Column(
-        children: [
-          Center(
-            child: ElevatedButton(
-              child: Text('Open route'),
-              onPressed: () {
-                Navigator.pushNamed(context, OtherPage.routeName);
-              },
+      body: Container(
+        padding: const EdgeInsets.all(5),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            // riga per bottone impostazioni
+            Align(
+              child: Container(
+                alignment: Alignment.topRight,
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text('...',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black)),
+                ),
+              ),
             ),
-          ),
-          Center(child:SetterWithArrows(
-            defaultVariable: 2,
-            defaultMax: 10,
-            defaultMin: 1,
-          )),
-        ],
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Card(
+                      color: Colors.green,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+                        child: Text(
+                          'Squadre',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Ink(
+                      height: 28,
+                      decoration: const ShapeDecoration(
+                        color: Colors.blue,
+                        shape: CircleBorder(),
+                      ),
+                      child: IconButton(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        iconSize: 10,
+                        color: Colors.white,
+                        icon: const Icon(Icons.remove),
+                        onPressed: () {
+                          if (_team > 2) {
+                            setState(() {
+                              _team--;
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 2),
+                        child: Text(
+                          '$_team',
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    Ink(
+                      height: 28,
+                      decoration: const ShapeDecoration(
+                        color: Colors.blue,
+                        shape: CircleBorder(),
+                      ),
+                      child: IconButton(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        //
+                        iconSize: 15,
+                        color: Colors.white,
+                        icon: const Icon(Icons.add),
+                        onPressed: () {
+                          if (_team < 5) {
+                            setState(() {
+                              _team++;
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Card(
+                      color: Colors.green,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
+                        child: Text(
+                          'Round',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Ink(
+                      height: 28,
+                      decoration: const ShapeDecoration(
+                        color: Colors.blue,
+                        shape: CircleBorder(),
+                      ),
+                      child: IconButton(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        iconSize: 10,
+                        color: Colors.white,
+                        icon: const Icon(Icons.remove),
+                        onPressed: () {
+                          if (_round > 2) {
+                            setState(() {
+                              _round--;
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                    Card(
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(10, 0, 10, 2),
+                        child: Text(
+                          '$_round',
+                          style: const TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    Ink(
+                      height: 28,
+                      decoration: const ShapeDecoration(
+                        color: Colors.blue,
+                        shape: CircleBorder(),
+                      ),
+                      child: IconButton(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        iconSize: 10,
+                        color: Colors.white,
+                        icon: const Icon(Icons.add),
+                        onPressed: () {
+                          if (_round < 8) {
+                            setState(() {
+                              _round++;
+                            });
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            //bottone play
+            Container(
+              // color: Colors.amber,
+              alignment: Alignment.center,
+              margin: const EdgeInsets.only(bottom: 20.0),
+              child: MaterialButton(
+                height: 70.0,
+                minWidth: 150.0,
+                color: Colors.red,
+                textColor: Colors.white,
+                onPressed: initializeGame,
+                child: const Text(
+                  'Play!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 30,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

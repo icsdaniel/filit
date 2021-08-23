@@ -1,4 +1,5 @@
-import 'package:filit/src/pages/otherpage.dart';
+import 'package:filit/src/pages/finalScore.dart';
+import 'package:filit/src/pages/sliderPage.dart';
 import 'package:flutter/material.dart';
 import 'src/pages/homepage.dart';
 
@@ -12,7 +13,9 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'filit',
       routes: {
-        OtherPage.routeName: (context) => const OtherPage(),
+        HomePage.routeName: (context) => const HomePage(),
+        StartGame.routeName: (context) => const StartGame(),
+        FinalScore.routeName: (context) => const FinalScore(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
