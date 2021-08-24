@@ -1,6 +1,6 @@
 import 'package:filit/src/pages/homepage.dart';
 import 'package:flutter/material.dart';
-import '../widgets/pointsSlider2.dart';
+import '../widgets/pointsSlider.dart';
 import 'package:provider/provider.dart';
 import '../models/slider.dart';
 
@@ -15,21 +15,18 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
 
-  double _variable = 20;
 
   void _increaseVariable() {
     setState(() {
       var slider = context.read<SliderModel>();
-      _variable=_variable+5;
-      slider.blockHeight=_variable;
+      slider.blockHeight=slider.blockHeight+5;
     });
   }
 
   void _decreaseVariable() {
     setState(() {
       var slider = context.read<SliderModel>();
-      _variable=_variable-5;
-      slider.blockHeight=_variable;
+      slider.blockHeight=slider.blockHeight-5;
     });
   }
 
@@ -48,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             SizedBox(
                 child: Text(
-                  _variable.toString(),
+                  slider.blockHeight.toString(),
                   textAlign: TextAlign.center,
                 ),
                 width: 20),
@@ -66,7 +63,7 @@ class _SettingsPageState extends State<SettingsPage> {
               if (child != null) child,
               Text("settings page\nslider block:${slider.blockHeight}"),
               BackButton(onPressed: () => Navigator.pushNamed(context, HomePage.routeName)),
-              PointsSlider2(random: false,blockHeight: slider.blockHeight),
+              PointsSlider(random: false,blockHeight: slider.blockHeight),
             ],
           ),
           // Build the expensive widget here.
