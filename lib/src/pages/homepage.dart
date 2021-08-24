@@ -1,6 +1,7 @@
+import 'package:filit/src/pages/toCheckSliderPage.dart';
 import 'package:flutter/material.dart';
 import 'sliderPage.dart';
-import '../widgets/setterWithArrows.dart';
+import 'settings.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/homepage';
@@ -39,7 +40,31 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.topRight,
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      SettingsPage.routeName,
+                    );
+                  },
+                  child: const Text('...',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black)),
+                ),
+              ),
+            ),
+            Align(
+              child: Container(
+                alignment: Alignment.topLeft,
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      OtherPage.routeName,
+                    );
+                  },
                   child: const Text('...',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
