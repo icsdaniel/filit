@@ -1,7 +1,4 @@
-import 'package:filit/src/pages/finalScore.dart';
 import 'package:filit/src/pages/settings.dart';
-import 'package:filit/src/pages/sliderPage.dart';
-import 'package:filit/src/pages/toCheckSliderPage.dart';
 import 'package:flutter/material.dart';
 import 'src/pages/homepage.dart';
 import 'package:provider/provider.dart';
@@ -19,10 +16,7 @@ class App extends StatelessWidget {
         title: 'filit',
         routes: {
           HomePage.routeName: (context) => const HomePage(),
-          StartGame.routeName: (context) => const StartGame(),
-          FinalScore.routeName: (context) => const FinalScore(),
-          SettingsPage.routeName: (context) => const SettingsPage(),
-          OtherPage.routeName: (context) => const OtherPage(),
+          SettingsPage.routeName: (context) => const SettingsPage()
         },
         theme: ThemeData(
           primarySwatch: Colors.blue,

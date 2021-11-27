@@ -35,6 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
     var slider = context.read<SliderModel>();
 
     return Scaffold(
+      appBar: AppBar(),
       body: Column(children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -59,6 +60,7 @@ class _SettingsPageState extends State<SettingsPage> {
         Consumer<SliderModel>(
           builder: (context, slider, child) => Row(
             children: [
+              Text("asd"),
               // Use SomeExpensiveWidget here, without rebuilding every time.
               if (child != null) child,
               Text("settings page\nslider block:${slider.blockHeight}"),

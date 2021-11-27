@@ -1,6 +1,4 @@
-import 'package:filit/src/pages/toCheckSliderPage.dart';
 import 'package:flutter/material.dart';
-import 'sliderPage.dart';
 import 'settings.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,19 +13,10 @@ class _HomePageState extends State<HomePage> {
   var _team = 2;
   var _round = 5;
 
-  initializeGame() {
-    Navigator.pushNamed(
-      context,
-      StartGame.routeName,
-      arguments: {
-        'round': _round,
-        'teams': _team,
-      },
-    );
-  }
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Container(
         padding: const EdgeInsets.all(5),
         child: Column(
@@ -60,10 +49,6 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      OtherPage.routeName,
-                    );
                   },
                   child: const Text('...',
                       style: TextStyle(
@@ -253,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                 minWidth: 150.0,
                 color: Colors.red,
                 textColor: Colors.white,
-                onPressed: initializeGame,
+                onPressed: ()=>{},
                 child: const Text(
                   'Play!',
                   style: TextStyle(
