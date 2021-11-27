@@ -12,10 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var _team = 2;
-  var _round = 5;
-  
-
   Widget build(BuildContext context) {
     var gameData = context.read<GameModel>();
     // gameData.printTeam();
@@ -52,8 +48,7 @@ class _HomePageState extends State<HomePage> {
                 alignment: Alignment.topLeft,
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                   child: const Text('...',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -103,12 +98,10 @@ class _HomePageState extends State<HomePage> {
                         iconSize: 10,
                         color: Colors.white,
                         icon: const Icon(Icons.remove),
-                        onPressed: () {
-                          if (_team > 2) {
-                            setState(() {
-                              _team--;
-                            });
-                          }
+                        onPressed: () => {
+                          setState(() {
+                            gameData.RemoveTeam();
+                          })
                         },
                       ),
                     ),
@@ -116,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 2),
                         child: Text(
-                          '$_team',
+                          '${gameData.teams}',
                           style: const TextStyle(fontSize: 20),
                         ),
                       ),
@@ -135,12 +128,10 @@ class _HomePageState extends State<HomePage> {
                         iconSize: 15,
                         color: Colors.white,
                         icon: const Icon(Icons.add),
-                        onPressed: () {
-                          if (_team < 5) {
-                            setState(() {
-                              _team++;
-                            });
-                          }
+                        onPressed: () => {
+                          setState(() {
+                            gameData.addTeam();
+                          })
                         },
                       ),
                     ),
@@ -188,12 +179,10 @@ class _HomePageState extends State<HomePage> {
                         iconSize: 10,
                         color: Colors.white,
                         icon: const Icon(Icons.remove),
-                        onPressed: () {
-                          if (_round > 2) {
-                            setState(() {
-                              _round--;
-                            });
-                          }
+                        onPressed: () => {
+                          setState(() {
+                            gameData.removeRound();
+                          })
                         },
                       ),
                     ),
@@ -201,7 +190,7 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 10, 2),
                         child: Text(
-                          '$_round',
+                          '${gameData.totalRounds}',
                           style: const TextStyle(fontSize: 20),
                         ),
                       ),
@@ -219,12 +208,10 @@ class _HomePageState extends State<HomePage> {
                         iconSize: 10,
                         color: Colors.white,
                         icon: const Icon(Icons.add),
-                        onPressed: () {
-                          if (_round < 8) {
-                            setState(() {
-                              _round++;
-                            });
-                          }
+                        onPressed: () => {
+                          setState(() {
+                            gameData.addRound();
+                          })
                         },
                       ),
                     ),
@@ -242,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                 minWidth: 150.0,
                 color: Colors.red,
                 textColor: Colors.white,
-                onPressed: ()=>{},
+                onPressed: () => {},
                 child: const Text(
                   'Play!',
                   style: TextStyle(

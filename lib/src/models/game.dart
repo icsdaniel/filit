@@ -1,17 +1,29 @@
 import 'package:flutter/foundation.dart';
 
 class GameModel extends ChangeNotifier {
-  int _teams = 2;
   int _totalRounds = 5;
   int _currentRound = 1;
-  var _points = [0, 0, 0];
+  var _points = [0, 0];
 
+  int MAX_TEAMS = 10;
+  int MIN_TEAMS = 2;
+  int MAX_ROUND = 10;
+  int MIN_ROUND = 2;
+
+  // void printTeam(){
+  //   print(_points);
+  // }
+  
   int get teams {
-    return _teams;
+    return _points.length;
   }
 
-  void set teams(int val) {
-    _teams = val;
+  int get totalRounds {
+    return _totalRounds;
+  }
+
+  void set totalRounds(int val) {
+    _totalRounds = val;
   }
 
   int get currentRound {
@@ -23,18 +35,26 @@ class GameModel extends ChangeNotifier {
   }
 
   void addTeam() {
-    this._points.add(0);
+    if (_points.length < MAX_TEAMS) {
+      this._points.add(0);
+    }
   }
 
   void RemoveTeam() {
-    this._points.removeLast();
+    if (_points.length > MIN_TEAMS) {
+      this._points.removeLast();
+    }
   }
 
   void addRound() {
-    _totalRounds = _totalRounds + 1;
+    if (_totalRounds < MAX_ROUND) {
+      _totalRounds = _totalRounds + 1;
+    }
   }
 
   void removeRound() {
-    _totalRounds = _totalRounds - 1;
+    if (_totalRounds > MIN_ROUND) {
+      _totalRounds = _totalRounds - 1;
+    }
   }
 }
