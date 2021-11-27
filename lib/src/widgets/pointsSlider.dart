@@ -1,7 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../pages/settings.dart';
 
 class PointsSlider extends StatefulWidget {
   PointsSlider(

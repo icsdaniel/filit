@@ -13,7 +13,6 @@ class _HomePageState extends State<HomePage> {
   var _team = 2;
   var _round = 5;
 
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),

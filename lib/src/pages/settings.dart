@@ -14,19 +14,19 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-
+  int incDecValue = 5;
 
   void _increaseVariable() {
     setState(() {
       var slider = context.read<SliderModel>();
-      slider.blockHeight=slider.blockHeight+5;
+      slider.blockHeight = slider.blockHeight + incDecValue;
     });
   }
 
   void _decreaseVariable() {
     setState(() {
       var slider = context.read<SliderModel>();
-      slider.blockHeight=slider.blockHeight-5;
+      slider.blockHeight = slider.blockHeight - incDecValue;
     });
   }
 
@@ -34,43 +34,28 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     var slider = context.read<SliderModel>();
 
-    return Scaffold(
-      appBar: AppBar(),
+    return SafeArea(
+        child: Scaffold(
       body: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: _increaseVariable,
-              icon: Icon(Icons.arrow_drop_up),
-            ),
-            SizedBox(
-                child: Text(
-                  slider.blockHeight.toString(),
-                  textAlign: TextAlign.center,
-                ),
-                width: 20),
-            IconButton(
-              onPressed: _decreaseVariable,
-              icon: Icon(Icons.arrow_drop_down),
-            ),
-            Text(slider.blockHeight.toString()),
-          ],
-        ),
+        BackButton(onPressed: () => Navigator.pop(context)),
         Consumer<SliderModel>(
           builder: (context, slider, child) => Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("asd"),
-              // Use SomeExpensiveWidget here, without rebuilding every time.
-              if (child != null) child,
-              Text("settings page\nslider block:${slider.blockHeight}"),
-              BackButton(onPressed: () => Navigator.pushNamed(context, HomePage.routeName)),
-              PointsSlider(random: false,blockHeight: slider.blockHeight),
+              IconButton(
+                onPressed: _increaseVariable,
+                icon: Icon(Icons.arrow_drop_up),
+              ),
+              PointsSlider(random: false, blockHeight: slider.blockHeight),
+              IconButton(
+                onPressed: _decreaseVariable,
+                icon: Icon(Icons.arrow_drop_down),
+              ),
             ],
           ),
           // Build the expensive widget here.
         ),
       ]),
-    );
+    ));
   }
 }
