@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'settings.dart';
+import 'package:provider/provider.dart';
+import '../models/game.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/homepage';
@@ -12,8 +14,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var _team = 2;
   var _round = 5;
+  
 
   Widget build(BuildContext context) {
+    var gameData = context.read<GameModel>();
+    // gameData.printTeam();
     return Scaffold(
       appBar: AppBar(),
       body: Container(

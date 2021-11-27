@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/pointsSlider.dart';
 import 'package:provider/provider.dart';
 import '../models/slider.dart';
+import '../models/game.dart';
 
 class SettingsPage extends StatefulWidget {
   static const routeName = '/settings';
@@ -14,22 +15,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  int incDecValue = 5;
-
-  void _increaseVariable() {
-    setState(() {
-      var slider = context.read<SliderModel>();
-      slider.blockHeight = slider.blockHeight + incDecValue;
-    });
-  }
-
-  void _decreaseVariable() {
-    setState(() {
-      var slider = context.read<SliderModel>();
-      slider.blockHeight = slider.blockHeight - incDecValue;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     var slider = context.read<SliderModel>();
@@ -43,12 +28,20 @@ class _SettingsPageState extends State<SettingsPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                onPressed: _increaseVariable,
+                onPressed: () => {
+                  setState(() {
+                    slider.increaseBlock();
+                  })
+                },
                 icon: Icon(Icons.arrow_drop_up),
               ),
               PointsSlider(random: false, blockHeight: slider.blockHeight),
               IconButton(
-                onPressed: _decreaseVariable,
+                onPressed: () => {
+                  setState(() {
+                    slider.decreaseBlock();
+                  })
+                },
                 icon: Icon(Icons.arrow_drop_down),
               ),
             ],

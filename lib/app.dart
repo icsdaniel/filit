@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import 'src/pages/homepage.dart';
 import 'package:provider/provider.dart';
 import 'src/models/slider.dart';
+import 'src/models/game.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => SliderModel(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => GameModel()),
+        ChangeNotifierProvider(create: (context) => SliderModel()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'filit',
